@@ -14,7 +14,7 @@ const initialState = {
 export const Register = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
-  const { user, showAlert, isLoading, displayAlert, registerUser } =
+  const { user, showAlert, isLoading, displayAlert, registerUser, loginUser } =
     useAppContext();
 
   const onSubmit = (e) => {
@@ -28,14 +28,14 @@ export const Register = () => {
     if (!isMember) {
       registerUser(currentUser);
     } else {
-      console.log("Already a member!");
+      loginUser(currentUser);
     }
   };
 
   useEffect(() => {
-    if(user){
+    if (user) {
       setTimeout(() => {
-        navigate('/')
+        navigate("/");
       }, 3000);
     }
   }, [user, navigate]);
